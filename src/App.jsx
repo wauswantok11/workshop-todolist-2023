@@ -1,4 +1,6 @@
-import './App.css'
+import "./App.css";
+import Header from "./components/Header/Header";
+import TodoList from "./components/TodoList/TodoList";
 
 function App() {
   const todoList = [
@@ -25,15 +27,15 @@ function App() {
       task: "Print homework",
       dueDate: new Date("2024-07-26"),
       isFinished: true,
-    }
-  ]
+    },
+  ];
 
   return (
     <div className="App">
-      {/* Header here */}
-      {/* Todo list here*/}
+      <Header />
+      <TodoList todoList={todoList} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
