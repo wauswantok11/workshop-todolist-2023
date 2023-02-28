@@ -8,7 +8,6 @@ function TodoItem(props) {
   const date = dueDate.getDate();
   const month = dueDate.getMonth();
   const year = dueDate.getFullYear();
-  console.log(isFinished)
 
   return (
     <div className="form-control">
