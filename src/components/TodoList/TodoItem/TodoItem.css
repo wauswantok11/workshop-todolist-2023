@@ -13,19 +13,28 @@
 }
 
 .cb-container {
-    min-width: 20%;
+    min-width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .tn-container {
-    min-width: 40%;
+    min-width: 30%;
 }
 
 .dd-container {
-    min-width: 40%;
+    min-width: 30%;
 }
+
+.ed-container {
+  min-width: 15%;
+}
+
+.dl-container {
+  min-width: 15%;
+}
+
 
 input[type="checkbox"] {
   /* Add if not using autoprefixer */

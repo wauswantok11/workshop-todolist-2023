@@ -15,7 +15,15 @@ function TodoItem(props) {
         <input checked={isFinished} type="checkbox" />
       </div>
       <div className="tn-container">{task}</div>
-      <div className="dd-container">{date}/{month}/{year}</div>
+      <div className="dd-container">
+        {date}/{month}/{year}
+      </div>
+      <div className="ed-container">
+        <button>Edit</button>
+      </div>
+      <div className="dl-container">
+        <button>Delete</button>
+      </div>
     </div>
   );
 }
