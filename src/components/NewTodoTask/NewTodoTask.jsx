@@ -17,7 +17,7 @@ function NewTodoTask(props) {
   const clickHanlder = () => {
     const newTodo = {
         task: task,
-        dueDate: date,
+        dueDate: new Date(date),
     }
 
     props.addNewTodo(newTodo)
