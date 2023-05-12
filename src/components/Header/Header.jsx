@@ -1,16 +1,16 @@
 import React from "react";
 import "./Header.css"
 
-function Header() {
+function Header({ value, onChange }) {
     return (
         <div className="container-header">
             <div className="label-header">
                 Filter:
             </div>
-            <select class="select-header">
-                <option>2022</option>
-                <option>2023</option>
-                <option>2024</option>
+            <select value={value} onChange={onChange} class="select-header">
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
             </select>
         </div>
 
