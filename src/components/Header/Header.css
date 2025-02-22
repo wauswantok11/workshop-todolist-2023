@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@300&family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Liter&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Thai:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+ 
+h1 {
+    font-family: var(--font-family);
+    color: var(--font-color-black);
+    font-weight: bold;
+}

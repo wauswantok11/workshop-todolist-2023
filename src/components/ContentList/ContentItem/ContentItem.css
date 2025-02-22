@@ -1,0 +1,84 @@
+.content-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 280px;
+  font-family: var(--font-family);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #4caf50;
+}
+
+.content-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-header {
+  span {
+    font-weight: 700;
+    & > svg {
+      font-size: 24px;
+    }
+  }
+}
+
+.item-controller {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.price-tag {
+  background: #4caf50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-tag {
+  background: #4c61af;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.delete-tag {
+  background: #af4c4c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.item-details p {
+  color: #555;
+  font-size: 1rem;
+  margin: 5px 0;
+}
+.item-details tr {
+  td {
+    display: flex;
+  }
+  display: flex;
+  align-items: center;
+}
