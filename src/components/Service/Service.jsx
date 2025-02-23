@@ -100,7 +100,7 @@ function Service(props) {
       type: SelectTypeList,
     };
     setName("");
-    setPrice("");
+    setPrice(0);
     setPaymentChannels("");
     setSelectTypeList("");
     setSelectCategory("");
@@ -108,6 +108,7 @@ function Service(props) {
   }
 
   async function handlerSubmitFormUpdate() {
+    // console.log('editName', editName)
     const editList = {
       id : editId,
       name: editName,
@@ -116,22 +117,36 @@ function Service(props) {
       type_payment: editPaymentChannels,
       type: editTypeList,
     };
-    setEditId(""); 
+    setEditId(0); 
     setEditName("");
-    setEditPrice(""); 
+    setEditPrice(0); 
     setEditPaymentChannels(""); 
     setEditTypeList(""); 
     setCategory(""); 
 
     setName("");
-    setPrice("");
+    setPrice(0);
     setPaymentChannels("");
     setSelectTypeList("");
     setSelectCategory("");
-    
+
     props.editNewList(editList);
     props.clearEditList(); 
-
+  }
+  
+  async function handlerRemoveForm() {
+    setEditId(0); 
+    setEditName("");
+    setEditPrice(0); 
+    setEditPaymentChannels(""); 
+    setEditTypeList(""); 
+    setCategory(""); 
+    setName("");
+    setPrice(0);
+    setPaymentChannels("");
+    setSelectTypeList("");
+    setSelectCategory("");
+    props.clearEditList(); 
   }
   
 
@@ -141,7 +156,7 @@ function Service(props) {
       <FormControl fullWidth margin="normal">
         <InputLabel htmlFor="name">ชื่อรายการ</InputLabel>
         <Input 
-          value={editName || name} 
+          value={editName ? editName : name} 
           onChange={editName ? handleSetEditName : handleSetName} 
           type="text" 
           id="name" />
@@ -213,7 +228,7 @@ function Service(props) {
         >
           {editId ?  'แก้ไขข้อมูล' : 'เพิ่มข้อมูล'}
         </Button>
-        <Button variant="outlined" sx={{ mt: 2 }}>
+        <Button onClick={handlerRemoveForm} variant="outlined" sx={{ mt: 2 }}>
           ยกเลิก
         </Button>
       </div>

@@ -52,7 +52,7 @@ function ContentItem(props) {
   return (
     <div className="content-item" key={props.id}>
       <div className="item-header">
-        <h3>{props.name}</h3>
+        <h3>{props.id}. {props.name}</h3>
         <span className="price-tag">
           {props.price} <TbCurrencyBaht />{" "}
         </span>
