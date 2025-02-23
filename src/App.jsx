@@ -1,6 +1,5 @@
 import './App.css'
-import React from 'react'
-import TodoList from './components/TodoList/TodoList'
+import React , {useState} from 'react'
 import Header from './components/Header/Header' 
 import Service from './components/Service/Service'
 import ContentList from './components/ContentList/ContentList'
@@ -47,7 +46,8 @@ function App() {
     return initialId
   }
 
-  const [allList, setAllList] = React.useState(list)
+  const [allList, setAllList] = useState(list)
+  const [edit, setEdit] = useState("")
 
   const addNewList = (newList) =>{ 
     const newData = {
@@ -58,18 +58,34 @@ function App() {
       { ...newData, id: uniqueId() }
     ]);
   }
+  const clearEditList = () => {
+    setEdit("");  
+  };
+  const editNewList = (editList) => { 
+    console.log('editList', editList);
   
-  const itemId = (id) => {
-    console.log('app id', id)
-    const updatedItems = allList.filter((item) => item.id !== id);
-    setAllList(updatedItems)
+    setAllList((prevList) => 
+      prevList.map((item) =>
+        item.id === editList.id ? { ...item, ...editList } : item
+      )
+    );
+  };
+  
+  const handleDeleteId = (id) => {
+    const updatedList = allList.filter((item) => item.id !== id);
+    setAllList(updatedList)
+  }
+
+  const handleEditId = (id) => {
+    const items = allList.filter((item) => item.id === id);
+    setEdit(items)
   }
 
   return (
     <div className="App">
       <Header />
-      <Service addNewList={addNewList} />
-      <ContentList list={allList} deleteItem={itemId} />
+      <Service addNewList={addNewList} editList={edit} editNewList={editNewList} clearEditList={clearEditList}/>
+      <ContentList list={allList} deleteItem={handleDeleteId} editItem={handleEditId}/>
     </div>
   )
 }

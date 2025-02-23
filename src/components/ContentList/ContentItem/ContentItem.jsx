@@ -1,5 +1,5 @@
-import React from 'react';
-import "./ContentItem.css"
+import React, { useState } from "react";
+import "./ContentItem.css";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { FaPaypal } from "react-icons/fa";
@@ -8,13 +8,13 @@ import { TbCategoryPlus } from "react-icons/tb";
 import { TbCurrencyBaht } from "react-icons/tb";
 
 function ContentItem(props) {
-  // console.log("props", props);
   let category, payment, type;
-  if (props.typeCategory === 1) {
+  const typeCategory = props.typeCategory;
+  if (typeCategory === 1) {
     category = "อาหาร";
-  } else if (props.typeCategory === 2) {
+  } else if (typeCategory === 2) {
     category = "เครื่องดื่ม";
-  } else if (props.typeCategory === 3) {
+  } else if (typeCategory === 3) {
     category = "ของหวาน";
   }
   if (props.typePayment === 1) {
@@ -30,48 +30,64 @@ function ContentItem(props) {
     type = "รายรับ";
   }
 
-  const [deleteId, setDeleteId] = React.useState("")
-  const handleDeleteFilter =(id)=>{
-    setDeleteId(id)
-  }
+  const [deleteId, setDeleteId] = useState("");
+  const [editId, setEditId] = useState("");
 
-  if (deleteId != ""){  
-    props.deleteId(deleteId) 
-  }
+  const handleDeleteFilter = (id) => {
+    setDeleteId(id);
+  };
 
-
+  const handleEditFilter = (id) => {
+    setEditId(id);
+  };
+ 
+  React.useEffect(() => {
+    props.deleteId(deleteId);
+  }, [deleteId]);
+ 
+  React.useEffect(() => {
+    props.editId(editId);
+  }, [editId]);
+ 
   return (
     <div className="content-item" key={props.id}>
       <div className="item-header">
         <h3>{props.name}</h3>
-        <span className="price-tag">{props.price} <TbCurrencyBaht/> </span>
+        <span className="price-tag">
+          {props.price} <TbCurrencyBaht />{" "}
+        </span>
       </div>
       <div className="item-details">
-      <table className="contentTable">
-
-        <tr>
-          <td>
-            <strong><TbCategoryPlus/> {" "} หมวดหมู่ :</strong>
-          </td>
-          <td>{category}</td>
-        </tr>
-        <tr>
-          <td>
-            <strong> <FaPaypal/> {" "} การชำระเงิน :</strong>
-          </td>
-          <td >{payment}</td>
-        </tr>
-        <tr>
-          <td>
-            <strong><RiAlignItemBottomFill/> {" "}ประเภทรายการ :</strong> 
-          </td>
-          <td>{type}</td>
-        </tr> 
-        </table>
+        <strong>
+          <TbCategoryPlus />{" "}หมวดหมู่ :{" "}{category}
+        </strong>
+        <strong>
+          {" "}
+          <FaPaypal />{" "}การชำระเงิน :{" "}{payment}
+        </strong>
+        <strong>
+          <RiAlignItemBottomFill />{" "}ประเภทรายการ :{" "}{type}
+        </strong>
       </div>
       <div className="item-controller">
-        <span onClick={()=>{}} className="edit-tag" > <FaEdit/> </span>
-        <span onClick={()=>{handleDeleteFilter(props.id)}} className="delete-tag"> <MdDelete/> </span>
+        <span
+          onClick={() => {
+            handleEditFilter(props.id);
+          }}
+          className="edit-tag"
+        >
+          {" "}
+          <FaEdit />{" "}
+        </span>
+        <span
+          onClick={() => {
+            handleDeleteFilter(props.id);
+          }}
+          className="delete-tag"
+        >
+          {" "}
+          <MdDelete />{" "}
+        </span>
       </div>
     </div>
   );
